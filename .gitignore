@@ -1,6 +1,7 @@
 .vscode/
 *.out
 *.exe
+*.csv
 
 # Prerequisites
 *.d

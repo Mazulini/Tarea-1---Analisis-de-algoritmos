@@ -18,6 +18,9 @@
 #include <vector>
 
 #include "utils.cpp"
+#include "include/Mult_matrix_classic.h"
+#include "include/Mult_matrix_divide_conquer.h"
+#include "include/Mult_matrix_hybrid.h"
 
 // Include to be tested files here
 
@@ -56,6 +59,21 @@ int main(int argc, char *argv[])
         time_stdev = 0;
 
         // Test configuration goes here
+        std::vector<std::vector<int>> A = {
+            {1, 2, 3, 4},
+            {5, 6, 7, 8},
+            {9, 10, 11, 12},
+            {13, 14, 15, 16}
+        };
+
+        std::vector<std::vector<int>> B = {
+            {16, 15, 14, 13},
+            {12, 11, 10, 9},
+            {8, 7, 6, 5},
+            {4, 3, 2, 1}
+        };
+
+        Mult_matrix_divide_conquer calculadora(A, B);
 
         // Run to compute elapsed time
         for (i = 0; i < runs; i++) {
@@ -63,7 +81,11 @@ int main(int argc, char *argv[])
             display_progress(++executed_runs, total_runs_additive);
 
             begin_time = std::chrono::high_resolution_clock::now();
+            
             // Function to test goes here
+            std::vector<std::vector<int>> resultado = calculadora.multiply();
+
+
             end_time = std::chrono::high_resolution_clock::now();
 
             elapsed_time = end_time - begin_time;

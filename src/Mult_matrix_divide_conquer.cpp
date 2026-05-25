@@ -2,7 +2,7 @@
 #include <vector>
 #include <chrono>
 #include <stdexcept>
-#include "Mult_matrix_divide_conquer.h"
+#include "../include/Mult_matrix_divide_conquer.h"
 
 Mult_matrix_divide_conquer::Mult_matrix_divide_conquer(const std::vector<std::vector<int>>& A, const std::vector<std::vector<int>>& B) {
     this->A = A;

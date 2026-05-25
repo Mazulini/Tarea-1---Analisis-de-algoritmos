@@ -2,7 +2,7 @@
 #include <vector>
 #include <chrono>
 #include <stdexcept>
-#include "Mult_matrix_classic.h"
+#include "../include/Mult_matrix_classic.h"
 
 Mult_matrix_classic::Mult_matrix_classic(const std::vector<std::vector<int>>& A, const std::vector<std::vector<int>>& B) {
     this->A = A;
