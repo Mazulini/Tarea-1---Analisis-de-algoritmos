@@ -66,7 +66,7 @@ El objetivo de esta tarea es diseñar, implementar y evaluar experimentalmente e
 </div>
 
 > [!IMPORTANT]
-> Requisitos: Se recomienda usar g++ 11.2.0 como mínimo
+> Requisitos: Se recomienda usar g++ 11.4 como mínimo
 
 ```sh
 # Ejecutar el código
