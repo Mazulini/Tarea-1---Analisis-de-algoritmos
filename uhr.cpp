@@ -21,6 +21,7 @@
 #include "include/Mult_matrix_classic.h"
 #include "include/Mult_matrix_divide_conquer.h"
 #include "include/Mult_matrix_hybrid.h"
+#include "include/Rand_matrix_generator.h"
 
 // Include to be tested files here
 
@@ -39,7 +40,7 @@ int main(int argc, char *argv[])
     double mean_time, time_stdev, dev;
     auto begin_time = std::chrono::high_resolution_clock::now();
     auto end_time = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::nano> elapsed_time = end_time - begin_time;
+    std::chrono::duration<double, std::micro> elapsed_time = end_time - begin_time;
 
     // Set up random number generation
     std::random_device rd;
@@ -50,35 +51,31 @@ int main(int argc, char *argv[])
     std::ofstream time_data;
     time_data.open(argv[1]);
     time_data << "n,t_mean,t_stdev,t_Q0,t_Q1,t_Q2,t_Q3,t_Q4" << std::endl;
+    Rand_matrix_generator generator;
 
     // Begin testing
     std::cerr << "\033[0;36mRunning tests...\033[0m" << std::endl << std::endl;
     executed_runs = 0;
-    for (n = lower; n <= upper; n += step) {
+
+    std::vector<std::vector<int>> A = generator.generarMatrizEnteros(lower, 1, 100);
+    std::vector<std::vector<int>> B = generator.generarMatrizEnteros(lower, 1, 100);
+
+    for (n = lower; n <= upper; n *= step) {
         mean_time = 0;
         time_stdev = 0;
-
-        // Test configuration goes here
-        std::vector<std::vector<int>> A = {
-            {1, 2, 3, 4},
-            {5, 6, 7, 8},
-            {9, 10, 11, 12},
-            {13, 14, 15, 16}
-        };
-
-        std::vector<std::vector<int>> B = {
-            {16, 15, 14, 13},
-            {12, 11, 10, 9},
-            {8, 7, 6, 5},
-            {4, 3, 2, 1}
-        };
+        
 
         Mult_matrix_divide_conquer calculadora(A, B);
 
         // Run to compute elapsed time
         for (i = 0; i < runs; i++) {
+            //cada 8 runs me reinicia las matrices, de esta forma no las genera todo el tiempo y se demora un poco menos
+            if((i % 8) == 0){
+                A = generator.generarMatrizEnteros(lower, 1, 100);
+                B = generator.generarMatrizEnteros(lower, 1, 100);
+            }
             // Remember to change total depending on step type
-            display_progress(++executed_runs, total_runs_additive);
+            display_progress(++executed_runs, total_runs_multiplicative);
 
             begin_time = std::chrono::high_resolution_clock::now();
             
