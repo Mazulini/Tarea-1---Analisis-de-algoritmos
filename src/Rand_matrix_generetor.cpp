@@ -61,7 +61,6 @@ std::vector<std::vector<int>> Rand_matrix_generator :: generarMatrizTriangularSu
 
     // Llenamos solo la parte superior (incluyendo la diagonal)
     for (int i = 0; i < n; ++i) {
-        // Fíjate que 'j' empieza en 'i' en lugar de 0
         for (int j = i; j < n; ++j) {
             matriz[i][j] = dist(gen);
         }

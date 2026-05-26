@@ -7,7 +7,7 @@
 | Nombre | Github |
 |------|--------|
 |Matias Felipe Jener Valdebenito Valenzuela|[@Mazulini](https://github.com/Mazulini)|
-|Pablo Esteban Villagran Hermann|[@Pvilla14](https://github.com/Pvilla14)|
+|Pablo Esteban Villagran Hermanns|[@Pvilla14](https://github.com/Pvilla14)|
 |Javier Alejandro Campos Contreras|[@4lehh](https://github.com/4lehh)|
 
 
