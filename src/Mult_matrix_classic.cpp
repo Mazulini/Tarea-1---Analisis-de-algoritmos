@@ -16,6 +16,7 @@ std::vector<std::vector<int>> Mult_matrix_classic::multiply() {
     n3 = B.size();
     n4 = B[0].size();
 
+    // Validar que la dimensión de las matrices sea válida.
     if (n2 != n3) {
         throw std::invalid_argument("El numero de columnas de A debe ser igual al numero de filas de B.");
     }
@@ -23,6 +24,7 @@ std::vector<std::vector<int>> Mult_matrix_classic::multiply() {
     std::vector<std::vector<int>> C;
     C.resize(n1, std::vector<int>(n4, 0));
 
+    // Multiplicación de las matrices.
     for (int i = 0; i < n1; ++i) {
         for (int j = 0; j < n4; ++j) {
             for (int k = 0; k < n2; ++k) {
@@ -31,6 +33,7 @@ std::vector<std::vector<int>> Mult_matrix_classic::multiply() {
         }
     }
     
+    // Retornar resultado
     return C;
 }
 

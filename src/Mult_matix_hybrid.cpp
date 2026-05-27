@@ -24,13 +24,16 @@ std::vector<std::vector<int>> Mult_matrix_hybrid::hybrid_strassen(const std::vec
         return classic.multiply();
     }
 
+    // Caso base: matriz de dimensiones 1x1.
     if (n == 1) {
         std::vector<std::vector<int>> C(1, std::vector<int>(1));
         C[0][0] = A[0][0] * B[0][0];
         return C;
     }
 
+    // Crear las submatrices
     int mid = n / 2;
+
     std::vector<std::vector<int>> A11 = inicializar(mid);
     std::vector<std::vector<int>> A12 = inicializar(mid);
     std::vector<std::vector<int>> A21 = inicializar(mid);
@@ -58,20 +61,19 @@ std::vector<std::vector<int>> Mult_matrix_hybrid::hybrid_strassen(const std::vec
     std::vector<std::vector<int>> C21 = add(M2, M4);
     std::vector<std::vector<int>> C22 = add(restar(add(M1, M3), M2), M6);
 
+    // Retornar la combinación de las matrices
     return combine(C11, C12, C21, C22);
 }
 
-/*
-Solo crea una matrix de tamaño NxN
-*/
+
 std::vector<std::vector<int>> Mult_matrix_hybrid::inicializar(int length) {
+    // Crear una matriz de length*length
     std::vector<std::vector<int>> matrix(length, std::vector<int>(length, 0));
+    
     return matrix;
 };
 
-/*
-Suma de matrices
-*/
+
 std::vector<std::vector<int>> Mult_matrix_hybrid::add(const std::vector<std::vector<int>>& A, const std::vector<std::vector<int>>& B){
     // Se crea la matriz temp
 
@@ -86,9 +88,7 @@ std::vector<std::vector<int>> Mult_matrix_hybrid::add(const std::vector<std::vec
     return temp;
 };
 
-/*
-Resta de matrices
-*/
+
 std::vector<std::vector<int>> Mult_matrix_hybrid::restar(const std::vector<std::vector<int>>& A, const std::vector<std::vector<int>>& B){
     // Se crea la matriz temp
     std::vector<std::vector<int>> temp = Mult_matrix_hybrid::inicializar(A.size());

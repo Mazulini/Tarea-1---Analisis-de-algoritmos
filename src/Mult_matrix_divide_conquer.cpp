@@ -81,26 +81,22 @@ std::vector<std::vector<int>> Mult_matrix_divide_conquer::inicializar(int length
     return matrix;
 };
 
-    /*
-    Suma de matrices
-    */
-    std::vector<std::vector<int>> Mult_matrix_divide_conquer::add(const std::vector<std::vector<int>>& A, const std::vector<std::vector<int>>& B){
-        // Se crea la matriz temp
 
-        std::vector<std::vector<int>> temp = Mult_matrix_divide_conquer::inicializar(A.size());
+std::vector<std::vector<int>> Mult_matrix_divide_conquer::add(const std::vector<std::vector<int>>& A, const std::vector<std::vector<int>>& B){
+    // Se crea la matriz temp
 
-        for (int i = 0; i < temp.size(); i++) {
-            for (int j = 0; j < temp[i].size(); j++) {
-                temp[i][j] = A[i][j] + B[i][j];
-            }
+    std::vector<std::vector<int>> temp = Mult_matrix_divide_conquer::inicializar(A.size());
+
+    for (int i = 0; i < temp.size(); i++) {
+        for (int j = 0; j < temp[i].size(); j++) {
+            temp[i][j] = A[i][j] + B[i][j];
         }
+    }
 
-        return temp;
-    };
+    return temp;
+};
 
-/*
-Resta de matrices
-*/
+
 std::vector<std::vector<int>> Mult_matrix_divide_conquer::restar(const std::vector<std::vector<int>>& A, const std::vector<std::vector<int>>& B){
     // Se crea la matriz temp
     std::vector<std::vector<int>> temp = Mult_matrix_divide_conquer::inicializar(A.size());
@@ -117,20 +113,12 @@ std::vector<std::vector<int>> Mult_matrix_divide_conquer::restar(const std::vect
 void Mult_matrix_divide_conquer::split(const std::vector<std::vector<int>>& A, std::vector<std::vector<int>>& A11, std::vector<std::vector<int>>& A12, std::vector<std::vector<int>>& A21, std::vector<std::vector<int>>& A22){
     int mid = A.size() / 2;
 
+    // Completar las submatrices
     for(int i = 0; i < mid; i++) {
-
         for(int j = 0; j < mid; j++) {
-
-            // Superior izquierda
             A11[i][j] = A[i][j];
-
-            // Superior derecha
             A12[i][j] = A[i][j + mid];
-
-            // Inferior izquierda
             A21[i][j] = A[i + mid][j];
-
-            // Inferior derecha
             A22[i][j] = A[i + mid][j + mid];
         }
     }
@@ -143,20 +131,12 @@ std::vector<std::vector<int>> Mult_matrix_divide_conquer::combine(std::vector<st
 
     std::vector<std::vector<int>> C = Mult_matrix_divide_conquer::inicializar(real_length);
 
+    // Construir la matriz C a partir de las submatrices.
     for(int i = 0; i < mid; i++) {
-
         for(int j = 0; j < mid; j++) {
-
-            // Superior izquierda
             C[i][j] = C11[i][j];
-
-            // Superior derecha
             C[i][j + mid] = C12[i][j];
-
-            // Inferior izquierda
             C[i + mid][j] = C21[i][j];
-
-            // Inferior derecha
             C[i + mid][j + mid] = C22[i][j];
         }
     }

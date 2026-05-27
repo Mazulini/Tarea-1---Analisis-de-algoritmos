@@ -72,6 +72,6 @@ El objetivo de esta tarea es diseñar, implementar y evaluar experimentalmente e
 # Ejecutar el código
 g++ -std=c++11 uhr.cpp src/*.cpp -o uhr
 
-./uhr
+./uhr <filename>.csv <runs> <lower> <upper> <step>
 ```
 
